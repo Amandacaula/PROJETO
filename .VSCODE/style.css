@@ -1,0 +1,184 @@
+/*Essa função é para resetar as configurações automaticas do navegador*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Comando para começar a fazer o light mode*/
+:root {
+  /*seletor da classe que foi adicionada no html*/
+  --text-color: white; /* que todo o conteudo ao longo da pagina tera cor branca*/
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/moon-stars.svg);
+}
+
+/*no light mode, as cores dos textos ficarao com a cor preta e o fundo claro*/
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(assets/sun.svg);
+}
+
+body {
+  background: var(--bg-url);
+  /*background-image: url(./assets/bg-mobile.jpg);- comando utilizado antes do mode light*/
+  /* utilizamos o no-repeat pq nas configurações a imagem se repete durante toda a tela*/
+  background-repeat: no-repeat;
+  /* para centralizar a imagem e tira-la do canto*/
+  background-position: top center;
+  /* para se adequar ao tamanho do dispositivo*/
+  background-size: cover;
+}
+/* tem a opção de agrupar todos os backgrounds, pq afinal de contas é um comando unico e ficaria: 
+"Background: url(...) no repeat topcenter/cover;"*/
+
+body * {
+  /*Comando geral para todas as palavras de dentro do corpo*/
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  /* anteriormente antes do light mode estava como cor white, poem como vai haver transições entre a cor preta e branca utilizou o comando var*/
+}
+
+/* identificador de id (no html) - se coloca o # */
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px; /* para que o layout geral a caixa tenha o tamanho certo requerido do projeto e esta no padding automatico em que o primeiro numero é superior e inferior e o segundo numero é direita e esquerda*/
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+/* Caso eu não transformasse o profile img em block eu podria utilizar o comando text- align: center como um comando "pai" para os texts em linha */
+#profile img {
+  display: block;
+  width: 112px;
+  margin: auto;
+}
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto; /*centralizar o botão no block*/
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute; /*para que o botão fique em cima do track*/
+  z-index: 1; /*para q fique no andar 1, acima */
+  left: 0; /* no modo dark o switch fica para esquerda*/
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.light #switch button {
+  right: 0; /*no modo ligth o botão fia completamente para esquerda*/
+  left: initial;
+}
+#switch span {
+  display: block; /*pq o span é inline e no caso não aceitaria o comando de altura*/
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px; /*todos esses valores esta no inspect do figma do projto*/
+}
+
+/*links- as listas*/
+ul {
+  list-style: none; /*para retirar os pontos dos topicos*/
+  display: flex;
+  /* essa direção deixa em uma so coluna, pq o padrão do flez é row ou seja varias colunas uma atras da outra*/
+  flex-direction: column;
+  /* coloca espaço entre os elementos, no caso as linhas da coluna*/
+  gap: 16px; /* tem no projeto do figma os valores de espaço*/
+  padding: 24px 0; /* Espaço entre os icones e os botoes*/
+}
+
+/*ul li {border: 1px solid red;}
+  /*ocupa todo o espaço disponivel na caixa que sao os 360px do container pq é um display block
+  para o caso de "ul li a {} - ele ocuparia somente o espaço da palavra pq é inline, neste caso aplicando o display flex no a ele ocupa os 360px*/
+
+/*ul li a {
+  border: 1px solid red
+   para display block para centralizar poderia utilizar o "text- align: center; e no caso para o display flex no a eu utilizo o " justify-content: center" ambas as formas o texto fica centralizado.*/
+
+ul li a {
+  display: flex; /* para ocupar todo o espaço do container*/
+  justify-content: center;
+  height: 52px; /* tamanho da caixa*/
+  align-items: center; /*alinhar para que o texto fica mesmo no centro da caixa em questão de altura*/
+
+  /*Poderia retirar todos esses comandos de altura e alinhamento de itens e substituir somente pelo "padding: 16px 24px" que ai se alinhariam automaticamente também*/
+  background: var(--surface-color);
+  /*rgba(255, 255, 255, 0.1);  fundo dos botões*/
+  border: 1px solid var(--stroke-color); /*rgba(255, 255, 255, 0.5); borda dos botoes*/
+  border-radius: 8px; /*arredondmento de borda*/
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /* precisa do prefixo para q o navegador entenda o comando*/
+
+  text-decoration: none; /*para retirar o sublinhado das palavras*/
+  font-weight: 500;
+  transition: background 0.5s; /* é a transição de cor do ul li a para o ul li a: hover*/
+}
+
+/*propriedades para quando passar o mouse e mudar o botão, ter uma interação*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  /*rgba(255, 255, 255, 0.05); botão seleionado fica mais escuro*/
+  border: 1.5px solid var(--text-color); /* a borda fica mais destacada*/
+}
+
+/*Social-links*/
+#social-links {
+  /* apesar dos icones ja estarem um do lado do outro, a gente coloca o comando flex para que possamos utilizar o gap se fosse necessário para distanciar os icones, mas devido ao padding da sombra projetada não necessitou*/
+  /*todos os tamanhos de acordo com o projeto no figma*/
+  display: flex;
+
+  padding: 24px 0; /* espaço entre cima e baixo*/
+  font-size: 24px; /* tamanho dos icones*/
+  justify-content: center; /*centralizar os icones*/
+}
+#social-links a {
+  display: flex;
+  justify-content: center; /*icone alinhado do centro da sombra*/
+  align-items: center; /*alinhamento dos itens*/
+  padding: 16px; /*tamanho da sombra projetada*/
+  transition: background 0.2s;
+  border-radius: 50%; /*para que a sombra projetada seja um circulo*/
+}
+#social-links a:hover {
+  background: var(--highlight-color);
+  /* rgba(255, 255, 255, 0.2);
+   fundo dos icones quando passa o mouse*/
+}
+
+/*rodapé*/
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}

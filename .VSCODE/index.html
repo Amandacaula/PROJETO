@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br" class="">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <!-- view port é a parte visivel, neste caso o conteudo irá possuir uma largura
+     a se ajustar no tamanho do dispositivo na qual será aberto, se é pc ou celular
+     com zoom inicial de 1, podendo aumentar-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- a tag "rel" significa relacionamento com o arquivo do tipo stylesheet, cuja a referencia esta na pagina que criamos que contem o estilo css.Para achar a pasta criada coloca no href: ./ ou o nome da pasta. -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="profile">
+        <img src="./assets/avatar.png" alt="foto da lua." />
+        <p>@amandacaula</p>
+      </div>
+
+      <div id="switch" onclick="toggleMode()">
+        <button></button>
+        <span></span>
+      </div>
+
+      <ul>
+        <li>
+          <a href="#">Inscrever-se no NLW</a>
+        </li>
+
+        <li>
+          <a href="#">Baixar meu Ebook</a>
+        </li>
+
+        <li>
+          <a href="#">Ver meu portifólio</a>
+        </li>
+        <!-- o target tilizado aqui serve para que quando a pessoa clicar no link abra em outra janela -->
+        <li>
+          <a href="http://rocketseat.com.br/explorer" target="_blank"
+            >Conheça o Explore</a
+          >
+        </li>
+      </ul>
+      <div id="social-links">
+        <!-- no proprio site dos icones ja da o comando usual basico para se colocar os links sociais-->
+        <a href="https://github.com/amandacaula" target="_blank">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+
+        <a href="https://instagram.com/@amandacaula" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+
+        <a href="https://youtube.com/amandacaula" target="_blank">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a>
+
+        <a href="https://linkedin.com/in/amandacaula" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+      </div>
+      <!-- comando para rodapé-->
+      <footer>
+        Feito com ♥ pela
+        <a href="https://instagram.com/@amandacaula" target="_blank">
+          Amanda Caúla</a
+        >
+      </footer>
+    </div>
+    <!-- comando ja pronto que foi pego no site ionic.io para pegar os icones para colocar no projeto, o site constava no projeto do figma-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
