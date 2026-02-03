@@ -92,11 +92,21 @@ body * {
   left: 0; /* no modo dark o switch fica para esquerda*/
   transform: translateY(-50%);
   top: 50%;
+  /*para que o botão retorne do light ara o dark deslizando e nao abruptamente*/
+  animation: slide-back 0.4s;
+  /*neste caso nao precisa do forwaeds pq na propriedade do button left ja é 0*/
 }
 
 .light #switch button {
-  right: 0; /*no modo ligth o botão fia completamente para esquerda*/
-  left: initial;
+  animation: slide-in 0.4s forwards;
+  /*forwards é para que o botão nao volte a sua forma inicial apos deslizar*/
+  /*right: 0; /*no modo ligth o botão fia completamente para esquerda*/
+  /*left: initial;*/
+}
+/*para que o botão ao colocar o mouse em cima tenha uma sombra*/
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 #switch span {
   display: block; /*pq o span é inline e no caso não aceitaria o comando de altura*/
@@ -187,12 +197,32 @@ footer {
   font-size: 14px;
 }
 
-/*Media queries*/
+/*Media queries- ajuste do bacground em todas as telas*/
 @media (min-width: 700px) {
   :root {
     --bg-url: url(./assets/bg.jpg);
   }
   .light {
     --bg-url: url(./assets/bg-light.jpg);
+  }
+}
+
+/*animation = para que o botão do switch deslize*/
+/*slide-in: do dark para light*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to: {
+    left: 0;
   }
 }
