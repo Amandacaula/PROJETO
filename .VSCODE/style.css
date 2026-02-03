@@ -50,7 +50,8 @@ body * {
 
 /* identificador de id (no html) - se coloca o # */
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px; /* para que o layout geral a caixa tenha o tamanho certo requerido do projeto e esta no padding automatico em que o primeiro numero é superior e inferior e o segundo numero é direita e esquerda*/
 }
