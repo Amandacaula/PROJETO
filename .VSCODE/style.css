@@ -222,7 +222,7 @@ footer {
   from {
     left: 50%;
   }
-  to: {
+  to {
     left: 0;
   }
 }
